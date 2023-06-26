@@ -1,15 +1,39 @@
 import "./App.css";
-import { Basic } from "./styled-component/1.basic";
-import { Basic2 } from "./styled-component/2.mapfilter";
-import TestPage from "./styled-component/3.testpage";
-import { GrandFather } from "./react-hooks/usecontext/4.GrandFather";
-import GlobalStyle from "./styles/globalStyle";
+import { useState } from "react";
+import Box1 from "./react-hooks/react.memo/Box1";
+import Box2 from "./react-hooks/react.memo/Box2";
+import Box3 from "./react-hooks/react.memo/Box3";
+
+const boxesStyle = {
+  display: "flex",
+  marginTop: "10px",
+};
 
 function App() {
+  const [count, setCount] = useState(0);
+  console.log("app component rendered");
+
+  const onPlusButtonClickHandler = () => {
+    setCount(count + 1);
+  };
+
+  const onMinusButtonClickHandler = () => {
+    setCount(count + 1);
+  };
+
   return (
     <>
-      <GlobalStyle />
-      <GrandFather />
+      <h3>카운트 예제</h3>
+      <p>현재 카운트 : {count}</p>
+      <button onClick={onPlusButtonClickHandler}>+</button>
+      <button onClick={onMinusButtonClickHandler}>-</button>
+      <div style={boxesStyle}>
+        <Box1 />
+
+        <Box2 />
+
+        <Box3 />
+      </div>
     </>
   );
 }

@@ -1,5 +1,5 @@
 import { FamilyContext } from "./context/FamilyContext";
-import { Father } from "./5.Father";
+import { Father } from "./Father";
 
 export const GrandFather = () => {
   const houseName = "스파르타";
