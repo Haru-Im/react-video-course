@@ -1,14 +1,24 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 
 function ObjectComponent() {
   const [isAlive, setIsAlive] = useState(true);
   const [uselessCount, setUselessCount] = useState(0);
 
-  const me = {
-    name: "Ted Chang",
-    age: 21,
-    isAlive: isAlive ? "생존" : "사망",
-  };
+  //객체 -> 리렌더링 될때마다 주소값 바뀜 -> useEffect 노소용
+  //   const me = {
+  //     name: "Ted Chang",
+  //     age: 21,
+  //     isAlive: isAlive ? "생존" : "사망",
+  //   };
+
+  // 해결책 : useMemo 사용
+  const me = useMemo(() => {
+    return {
+      name: "Ted Chang",
+      age: 21,
+      isAlive: isAlive ? "생존" : "사망",
+    };
+  }, [isAlive]);
 
   useEffect(() => {
     console.log("생존여부가 바뀔 때만 호출해주세요!");
