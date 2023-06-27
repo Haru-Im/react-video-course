@@ -16,8 +16,10 @@ combineReducers은 여러 개의 독립적인 reducer의 반환 값을 하나의
 
 import { createStore } from "redux";
 import { combineReducers } from "redux";
+import counter from "../modules/counter";
+import users from "../modules/user";
 
-const rootReducer = combineReducers({});
+const rootReducer = combineReducers({ counter, users });
 
 const store = createStore(rootReducer);
 
