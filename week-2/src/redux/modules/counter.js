@@ -10,6 +10,14 @@ const initialState = {
 //action에는 type과 value가 있음
 const counter = (state = initialState, action) => {
   switch (action.type) {
+    case "PLUS_ONE":
+      return {
+        number: state.number + 1,
+      };
+    case "MINUS_ONE":
+      return {
+        number: state.number - 1,
+      };
     default:
       return state;
   }
