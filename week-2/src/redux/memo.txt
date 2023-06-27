@@ -1,0 +1,8 @@
+redux : redux 관련 코드 모두 몰아넣음
+
+config : 리덕스 설정 관련 파일 전부
+
+configStore : 중앙 state 관리소 -> 설정 코드(.js)
+
+modules : state의 그룹 
+(만약 todolist라면 todolist에 필요한 state들이 모여있는 todos.js파일들 => 하나의 모듈이 됨)
