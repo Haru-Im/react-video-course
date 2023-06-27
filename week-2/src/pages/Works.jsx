@@ -1,15 +1,24 @@
-import { Link, useLocation, useNavigate } from "react-router-dom";
+// src/pages/Works.js
 
-export const Works = () => {
-  //   const location = useLocation();
+import React from "react";
+import { Link, useParams } from "react-router-dom";
+import { data } from "../shared/data";
 
-  //   console.log("location", location);
-
+function Works() {
   return (
     <div>
-      works <br />
-      <button>Home으로 이동</button>
-      <Link to="/contact">contact 페이지로 이동</Link>
+      {data.map((work) => {
+        return (
+          <div key={work.id}>
+            <div>할일: {work.id}</div>
+            <Link to={`/works/${work.id}`}>
+              <span style={{ cursor: "pointer" }}>➡️ Go to: {work.todo}</span>
+            </Link>
+          </div>
+        );
+      })}
     </div>
   );
-};
+}
+
+export default Works;
