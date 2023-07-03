@@ -18,11 +18,6 @@ import { createSlice } from "@reduxjs/toolkit";
 //   };
 // };
 
-// Initial State
-const initialState = {
-  number: 0,
-};
-
 // 기존 Reducer
 // export const counter = (state = initialState, action) => {
 //   switch (action.type) {
@@ -38,6 +33,11 @@ const initialState = {
 //       return state;
 //   }
 // };
+
+// Initial State
+const initialState = {
+  number: 0,
+};
 
 const counterSlice = createSlice({
   name: "counter",
