@@ -1,6 +1,7 @@
 import "./App.css";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { apiClient } from "./axios/api";
 
 function App() {
   const [todos, setTodos] = useState([]);
@@ -12,18 +13,9 @@ function App() {
   const [targetId, setTargetId] = useState("");
   const [content, setContent] = useState("");
 
-  console.log(todos);
-
   const fetchTodos = async () => {
-    const response = await axios.get(
-      `${process.env.REACT_APP_SERVER_URL}/todos`
-    );
-    console.log(response.data);
-    if (Array.isArray(response.data)) {
-      setTodos(response.data);
-    } else {
-      console.error("Data from server is not an array");
-    }
+    const response = await apiClient.get("/todos");
+    setTodos(response.data);
   };
 
   const onSubmitFormHandler = (e) => {
@@ -32,20 +24,17 @@ function App() {
   };
 
   const postFormData = async () => {
-    const { data } = await axios.post(
-      `${process.env.REACT_APP_SERVER_URL}/todos`,
-      inputValue
-    );
+    const { data } = await apiClient.post("/todos", inputValue);
     setTodos([...todos, data]);
   };
 
   const onDeleteButtonClickHandler = async (id) => {
-    await axios.delete(`${process.env.REACT_APP_SERVER_URL}/todos/${id}`);
+    await apiClient.delete(`/todos/${id}`);
     setTodos(todos.filter((todo) => todo.id !== id));
   };
 
   const onUpdateButtonClickHandler = async () => {
-    await axios.patch(`${process.env.REACT_APP_SERVER_URL}/todos/${targetId}`, {
+    await apiClient.patch(`/todos/${targetId}`, {
       title: content,
     });
 
